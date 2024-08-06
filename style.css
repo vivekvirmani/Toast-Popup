@@ -1,0 +1,164 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+    font-family: "Nunito", sans-serif;
+    background-color: rgb(255, 248, 220);
+}
+
+.show-toast{
+    background-color: yellowgreen;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+select, input[type = "text"], button{
+   font: inherit;
+   padding: 8px;
+   border: none;
+   border-radius: 6px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin-inline: auto;
+}
+
+.duration-container{
+    display: flex;
+    align-items: center;
+    background-color: bisque;
+    height: 26px;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+}
+
+#duration{
+    flex-grow: 1;
+}
+
+.toast{
+    padding: 0.5em;
+    color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0, 0.25);
+    animation: fromLeft 0.1s ease-in;
+}
+
+.toast-container.right .toast{
+    animation: fromRight 0.1s ease-in;
+}
+
+.toast.go-left{
+    animation: toLeft 0.1s ease-in forwards;
+}
+
+.toast-container.right .toast.go-right{
+    animation: toRight 0.1s ease-in forwards;
+}
+
+@keyframes fromLeft {
+   0% {
+    transform: translateX(-100%);
+   }
+   100%{
+    transform: translateX(0);
+   }
+}
+
+@keyframes toLeft {
+    100% {
+     transform: translateX(-100%);
+    }
+    0%{
+     transform: translateX(0);
+    }
+ }
+
+ @keyframes fromRight {
+    0% {
+     transform: translateX(100%);
+    }
+    100%{
+     transform: translateX(0);
+    }
+ }
+ 
+ @keyframes toRight {
+      0%{
+      transform: translateX(0);
+     }
+     100%{
+      transform: translateX(100%);
+     }
+  } 
+
+.toast + .toast{
+    margin-top: 12px;
+}
+
+.toast.success{
+    background-color: yellowgreen;
+}
+
+.toast.error{
+    background-color: red;
+}
+
+.toast.warning{
+    background-color: orange;
+}
+
+.toast.info{
+    background-color: rgb(190, 190, 137);
+    color: black;
+}
+
+.toast span{
+    cursor: pointer;
+}
+
+.toast.success::before{
+    content: "✔"
+}
+
+.toast.error::before{
+    content: "⚠"
+}
+
+.toast.warning::before{
+    content: "ⓘ"
+}
+
+.toast.info::before{
+    content: "✍"
+}
+
+.toast-container{
+    position: absolute;
+    top: 1rem;
+    left: 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+.toast-container.right{
+    left: auto;
+    right: 0rem;
+}
+
+.toast-container.bottom{
+    top: auto;
+    bottom: 1rem;
+}
+  
